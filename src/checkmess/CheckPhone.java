@@ -10,10 +10,8 @@ public class CheckPhone {
 		return phone;
 	}
 
-
 	public CheckPhone(String x) {
 		this.phone = x;
-		// TODO Auto-generated constructor stub
 	}
 
 	public boolean isValidE123() {
@@ -21,16 +19,6 @@ public class CheckPhone {
 
 		Matcher m = p.matcher(this.phone);
 		return (m.find() && m.group().equals(this.phone));
-	}
-
-	public static void main(String[] args) {
-		CheckPhone phone1 = new CheckPhone("0913423546");
-
-		if (phone1.isValidE123())
-			System.out.println("ok");
-		else
-			System.out.println(" not ok");
-
 	}
 
 }

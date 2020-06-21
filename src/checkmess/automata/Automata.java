@@ -4,14 +4,6 @@
  * and open the template in the editor.
  */
 package checkmess.automata;
-
-import java.util.stream.IntStream;
-
-/**
- * s
- * 
- * @author tuanc
- */
 public class Automata {
 	public int finalState;
 	
@@ -44,9 +36,6 @@ public class Automata {
 		for (int i = 1; i < str.length(); i++) {
 
 			nextState = s.getNext(str.charAt(i), x.cur);
-			//System.out.println(x.cur);
-
-//System.out.println(nextState+" :"+str.charAt(i)+";"+s.State);
 			if (s.State > x.cur)
 				x.cur = s.State;
 			if (nextState < 0)
@@ -57,44 +46,5 @@ public class Automata {
 		}
 		
 		return x.cur;
-	}
-
-	public static void main(String[] args) {
-		int nextState = -1;
-		String[] string = { " " };
-		// String str = "";
-
-		Automata test= new Automata();
-		System.out.print(test.result(" "));
-	
-
-			/*System.out.print(str + ": " + x.cur);
-			if (x.cur == 1)
-				System.out.println("B/G missing");
-			if (x.cur == 0)
-				System.out.println("Frd missing");
-			if (x.cur == 2)
-				System.out.println("ok girl");
-			if (x.cur == 3)
-				System.out.println("ok man");
-			if (x.cur == 4)
-				System.out.println("missing del");
-			if (x.cur == 5)
-				System.out.println("ok del");
-			if (x.cur == 7)
-				System.out.println("RJ missing");
-			if (x.cur == 8)
-				System.out.println("B/G missing");
-			if (x.cur == 9)
-				System.out.println("Rejoin girl");
-			if (x.cur == 10)
-				System.out.println("Rejoin man");
-			if (x.cur == 11)
-				System.out.println("chg missing");
-			if (x.cur == 12)
-				System.out.println("chg ok");
-			// if(nextState!=9) //s.show();
-*/
-		
 	}
 }

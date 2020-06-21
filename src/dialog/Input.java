@@ -49,11 +49,12 @@ public class Input extends Composite {
 	public Input(Composite parent, int style) {
 		super(parent, style);
 		setLayout(null);
-
+		
 		Label lblNewLabel_1 = new Label(this, SWT.NONE);
 		lblNewLabel_1.setBounds(23, 45, 71, 20);
 		lblNewLabel_1.setText("Sender");
-
+		
+		// get sender from label
 		sender = new Text(this, SWT.BORDER);
 		sender.setBackground(SWTResourceManager.getColor(245, 245, 220));
 		sender.setBounds(107, 30, 376, 51);
@@ -61,7 +62,8 @@ public class Input extends Composite {
 		Label lblNewLabel_2 = new Label(this, SWT.NONE);
 		lblNewLabel_2.setBounds(23, 101, 71, 20);
 		lblNewLabel_2.setText("Message");
-
+		
+		// get message from label
 		message = new Text(this, SWT.BORDER);
 		message.setBackground(SWTResourceManager.getColor(245, 245, 220));
 		message.setBounds(107, 87, 376, 55);
@@ -69,11 +71,13 @@ public class Input extends Composite {
 		Label lblNewLabel_3 = new Label(this, SWT.NONE);
 		lblNewLabel_3.setBounds(23, 163, 70, 20);
 		lblNewLabel_3.setText("Receiver");
-
+		
+		// get receiver from label
 		receiver = new Text(this, SWT.BORDER);
 		receiver.setBackground(SWTResourceManager.getColor(245, 245, 220));
 		receiver.setBounds(107, 147, 376, 57);
-
+		
+		// Click cancel button to close shell
 		Button cancelBtn = new Button(this, SWT.NONE);
 		cancelBtn.setBounds(107, 208, 174, 42);
 		cancelBtn.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLUE));
@@ -91,18 +95,18 @@ public class Input extends Composite {
 		// display graph
 		Button graphBtn = new Button(this, SWT.NONE);
 		graphBtn.setForeground(SWTResourceManager.getColor(255, 20, 147));
+		graphBtn.setBounds(107, 264, 364, 51);
+		graphBtn.setText("SHOW GRAPH");
 		graphBtn.addListener(SWT.Selection, new Listener() {
 			@Override
 			public void handleEvent(Event e) {
 				switch (e.type) {
 				case SWT.Selection:
-					String[] arguments = new String[] { "123" };
-					Graph.main(arguments);
+					Graph.main("run");
+					break;
 				}
 			}
 		});
-		graphBtn.setBounds(107, 264, 364, 51);
-		graphBtn.setText("SHOW GRAPH");
 		
 
 		Button sendBtn = new Button(this, SWT.NONE);
@@ -110,6 +114,7 @@ public class Input extends Composite {
 		sendBtn.setForeground(SWTResourceManager.getColor(SWT.COLOR_RED));
 		sendBtn.setText("SEND");
 		
+		// send data to system for handling
 		sendBtn.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event e) {
 				switch (e.type) {
