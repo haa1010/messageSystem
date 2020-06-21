@@ -12,9 +12,8 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.wb.swt.SWTResourceManager;
 
-import graph.Database;
-import graph.Graph;
-import checkform.checkmess.message;
+import checkmess.message;
+import graph.*;
 
 public class Input extends Composite {
 	private Text sender;
@@ -38,6 +37,8 @@ public class Input extends Composite {
 
 		shell.pack();
 		shell.open();
+		// run update method to update data for graph at 4pm everyday 
+		Update.main("abc");
 		while (!shell.isDisposed()) {
 			if (!display.readAndDispatch())
 				display.sleep();
@@ -73,11 +74,11 @@ public class Input extends Composite {
 		receiver.setBackground(SWTResourceManager.getColor(245, 245, 220));
 		receiver.setBounds(107, 147, 376, 57);
 
-		Button clearBtn = new Button(this, SWT.NONE);
-		clearBtn.setBounds(107, 208, 174, 42);
-		clearBtn.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLUE));
-		clearBtn.setText("CANCEL");
-		clearBtn.addListener(SWT.Selection, new Listener() {
+		Button cancelBtn = new Button(this, SWT.NONE);
+		cancelBtn.setBounds(107, 208, 174, 42);
+		cancelBtn.setForeground(SWTResourceManager.getColor(SWT.COLOR_BLUE));
+		cancelBtn.setText("CANCEL");
+		cancelBtn.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event e) {
 				switch (e.type) {
 				case SWT.Selection:
@@ -86,11 +87,8 @@ public class Input extends Composite {
 			}
 		});
 
-		Button sendBtn = new Button(this, SWT.NONE);
-		sendBtn.setBounds(293, 208, 190, 42);
-		sendBtn.setForeground(SWTResourceManager.getColor(SWT.COLOR_RED));
-		sendBtn.setText("SEND");
 
+		// display graph
 		Button graphBtn = new Button(this, SWT.NONE);
 		graphBtn.setForeground(SWTResourceManager.getColor(255, 20, 147));
 		graphBtn.addListener(SWT.Selection, new Listener() {
@@ -105,29 +103,32 @@ public class Input extends Composite {
 		});
 		graphBtn.setBounds(107, 264, 364, 51);
 		graphBtn.setText("SHOW GRAPH");
+		
 
+		Button sendBtn = new Button(this, SWT.NONE);
+		sendBtn.setBounds(293, 208, 190, 42);
+		sendBtn.setForeground(SWTResourceManager.getColor(SWT.COLOR_RED));
+		sendBtn.setText("SEND");
+		
 		sendBtn.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event e) {
 				switch (e.type) {
 				case SWT.Selection:
-//					checkform.checkmess.message.main("ba");
 					Notification output;
 					String mess = message.getText();
 					String receive = receiver.getText();
 					String send = sender.getText();
+					
+					// check if customer leaves blank field
 					if (send.equals("") || mess.equals("") || receive.equals("")) {
 						output = new Notification("You have to fill out all fields!");
 					} else {
-
 						message test = new message(mess, Integer.parseInt(receive), send);
-						System.out.println("mess : " + message.getText());
-						System.out.println("receiver : " + Integer.parseInt(receiver.getText()));
-						System.out.println("sender: " + sender.getText());
 						test.exe();
 						String res = test.getMessageReturn();
-						System.out.println("Result = " + test.getResult() );
+						
+						// if message is wrong, increase number of wrong message in database
 						if (test.getResult() == 0) {
-							System.out.println("Wrong");
 							Database.countWrong();
 						}
 						output = new Notification(res);
