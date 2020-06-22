@@ -208,22 +208,30 @@ public class message {
 	}
 
 	public void exe() {
+		/**
+		 * This exe() method uses to handle message and give final result 
+		 */
+		
 		message mes = this;
 		Automata x = new Automata();
 		CheckPhone phone = new CheckPhone(mes.PhoneNumber);
-
-		// customer's phone number is invalid
+		/**
+		 * Check if customer is valid or not 
+		 */
 		if (!phone.isValidE123()) {
 			mes.setMessageReturn("Your phone number is wrong!");
 			return;
 		}
 
-		// get information about customer from database
+		/** 
+		 * Get information about customer from database
+		 * Customer who hasn't join system has state = -1
+		 */
+		
 		Response user = new Response();
 		ArrayList<String> s = user.checkUser(phone.getPhone());
 		String gender = "";
 
-		// customer who hasn't join system has state = -1
 		if (Integer.parseInt(s.get(2)) != -1) {
 			if (s.get(1).equals("G"))
 				gender = "girl";
@@ -233,6 +241,15 @@ public class message {
 
 		mes.checkReceiver(x.result(mes.message), Integer.parseInt(s.get(2)), gender);
 		switch (mes.getResult()) {
+		/**
+		 * Hanlde situations of result and update Database corresponding to request
+		 * Case 2 : send 3 number of Girl
+		 * Case 3 : send 3 number of Boy
+		 * Case 5 : Customer deletes, disconnect to system, change state in Database
+		 * Case 9 : Customer rejoin as a Girl
+		 * Case 10 : Customer rejoin as a Boy
+		 * Case 12 : Customer change his/her gender
+		 */
 		case 2:
 		case 3:
 			// send 3 number

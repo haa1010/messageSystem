@@ -15,6 +15,11 @@ import org.eclipse.wb.swt.SWTResourceManager;
 import checkmess.message;
 import graph.*;
 
+/**
+ * 
+ * @author Tran Thi Hang
+ */
+
 public class Input extends Composite {
 	private Text sender;
 	private Text message;
@@ -22,12 +27,18 @@ public class Input extends Composite {
 	private static Shell shell;
 
 	/**
-	 * Create the composite.
+	 * Create the composite for customer typing in .
 	 * 
 	 * @param parent
 	 * @param style
 	 */
 	public static void main(String[] args) {
+		/**
+		 * This is the main method which will display dialog for customer and run method
+		 * main of class Update which use to update data for graph at 4pm everyday
+		 * 
+		 * @see Update
+		 */
 		Display display = new Display();
 		shell = new Shell(display);
 		shell.setLayout(new GridLayout(1, false));
@@ -37,7 +48,7 @@ public class Input extends Composite {
 
 		shell.pack();
 		shell.open();
-		// run update method to update data for graph at 4pm everyday 
+		// run update method to update data for graph at 4pm everyday
 		Update.main("abc");
 		while (!shell.isDisposed()) {
 			if (!display.readAndDispatch())
@@ -47,13 +58,27 @@ public class Input extends Composite {
 	}
 
 	public Input(Composite parent, int style) {
+		/**
+		 * This is the constructor which uses to construct an Input instance for
+		 * handling. There are 3 buttons in the dialog : Cancel Button : close dialog.
+		 * Graph Button : display system's statistic graph. Send Button : before send,
+		 * we need to check that customer had filled out all the fields we need. Then
+		 * construct a message instance send to system and get a notification as a
+		 * result. If result is that message is wrong, then increase number of wrong
+		 * message in database
+		 * 
+		 * @see Graph
+		 * @see message
+		 * @see Notification
+		 * @see Database
+		 */
 		super(parent, style);
 		setLayout(null);
-		
+
 		Label lblNewLabel_1 = new Label(this, SWT.NONE);
 		lblNewLabel_1.setBounds(23, 45, 71, 20);
 		lblNewLabel_1.setText("Sender");
-		
+
 		// get sender from label
 		sender = new Text(this, SWT.BORDER);
 		sender.setBackground(SWTResourceManager.getColor(245, 245, 220));
@@ -62,7 +87,7 @@ public class Input extends Composite {
 		Label lblNewLabel_2 = new Label(this, SWT.NONE);
 		lblNewLabel_2.setBounds(23, 101, 71, 20);
 		lblNewLabel_2.setText("Message");
-		
+
 		// get message from label
 		message = new Text(this, SWT.BORDER);
 		message.setBackground(SWTResourceManager.getColor(245, 245, 220));
@@ -71,12 +96,12 @@ public class Input extends Composite {
 		Label lblNewLabel_3 = new Label(this, SWT.NONE);
 		lblNewLabel_3.setBounds(23, 163, 70, 20);
 		lblNewLabel_3.setText("Receiver");
-		
+
 		// get receiver from label
 		receiver = new Text(this, SWT.BORDER);
 		receiver.setBackground(SWTResourceManager.getColor(245, 245, 220));
 		receiver.setBounds(107, 147, 376, 57);
-		
+
 		// Click cancel button to close shell
 		Button cancelBtn = new Button(this, SWT.NONE);
 		cancelBtn.setBounds(107, 208, 174, 42);
@@ -90,7 +115,6 @@ public class Input extends Composite {
 				}
 			}
 		});
-
 
 		// display graph
 		Button graphBtn = new Button(this, SWT.NONE);
@@ -107,23 +131,26 @@ public class Input extends Composite {
 				}
 			}
 		});
-		
 
 		Button sendBtn = new Button(this, SWT.NONE);
 		sendBtn.setBounds(293, 208, 190, 42);
 		sendBtn.setForeground(SWTResourceManager.getColor(SWT.COLOR_RED));
 		sendBtn.setText("SEND");
-		
+
 		// send data to system for handling
 		sendBtn.addListener(SWT.Selection, new Listener() {
 			public void handleEvent(Event e) {
 				switch (e.type) {
 				case SWT.Selection:
+					/**
+					 * Declare 3 variables mess, receive and send to convert customer's input into
+					 * String and create a message instance to handles
+					 */
 					Notification output;
 					String mess = message.getText();
 					String receive = receiver.getText();
 					String send = sender.getText();
-					
+
 					// check if customer leaves blank field
 					if (send.equals("") || mess.equals("") || receive.equals("")) {
 						output = new Notification("You have to fill out all fields!");
@@ -131,7 +158,7 @@ public class Input extends Composite {
 						message test = new message(mess, Integer.parseInt(receive), send);
 						test.exe();
 						String res = test.getMessageReturn();
-						
+
 						// if message is wrong, increase number of wrong message in database
 						if (test.getResult() == 0) {
 							Database.countWrong();

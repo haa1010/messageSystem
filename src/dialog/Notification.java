@@ -12,6 +12,7 @@ import org.eclipse.wb.swt.SWTResourceManager;
 public class Notification extends Shell {
 
 	/**
+	 * @author Tran Thi Hang
 	 * Launch the application.
 	 * 
 	 * @param args
