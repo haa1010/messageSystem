@@ -16,8 +16,14 @@ import java.lang.String;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 
+/**
+ * @author Minh Thong- 20176881
+ */
 public class Graph extends JFrame {
 
+	/**
+	 * This is constructor for create initial graph with 640px width and 480px height
+	 */
 	public Graph() { // the constructor will contain the panel of a certain size and the close
 						// operations
 		super("Statistical graph"); // calls the super class constructor
@@ -30,7 +36,11 @@ public class Graph extends JFrame {
 		setLocationRelativeTo(null);
 	}
 
-	private JPanel createChartPanel() { // this method will create the chart panel containing the graph
+	/**
+	 * This function will create the chart panel containing the graph
+	 * @return new chart panel
+	 */
+	private JPanel createChartPanel() {
 		String chartTitle = "Statistical graph";
 		String xAxisLabel = "Time";
 		String yAxisLabel = "Number";
@@ -43,7 +53,11 @@ public class Graph extends JFrame {
 		return new ChartPanel(chart);
 	}
 
-	private XYDataset createDataset() { // this method creates the data as time series
+	/**
+	 * This function creates the data as time series
+	 * @return data set (number of boys, girls, wrong message, churn rate)
+	 */
+	private XYDataset createDataset() {
 		XYSeriesCollection dataset = new XYSeriesCollection();
 		XYSeries numberOfBoy = new XYSeries("Number of boys");
 		XYSeries numberOfGirl = new XYSeries("Number of girls");
@@ -83,7 +97,11 @@ public class Graph extends JFrame {
 		return dataset;
 	}
 
-	private void customizeChart(JFreeChart chart) { // here we make some customization
+	/**
+	 * This function is for customization the chart
+	 * @param chart graph
+	 */
+	private void customizeChart(JFreeChart chart) {
 		XYPlot plot = chart.getXYPlot();
 		XYLineAndShapeRenderer renderer = new XYLineAndShapeRenderer();
 
