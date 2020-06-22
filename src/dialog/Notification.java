@@ -9,15 +9,15 @@ import org.eclipse.swt.widgets.Listener;
 import org.eclipse.swt.widgets.Button;
 import org.eclipse.wb.swt.SWTResourceManager;
 
+/**
+ * @author Tran Thi Hang 20176748
+ */
 public class Notification extends Shell {
-
 	/**
-	 * @author Tran Thi Hang
-	 * Launch the application.
+	 * Launch the application. Create a shell with string s is content inside shell
 	 * 
-	 * @param args
+	 * @param s content of Notification
 	 */
-
 	public Notification(String s) {
 		try {
 			Display display = Display.getDefault();
@@ -37,10 +37,9 @@ public class Notification extends Shell {
 	/**
 	 * Create the shell.
 	 * 
-	 * @param display
-	 * @wbp.parser.constructor
+	 * @param display default option
+	 * @param s       content inside shell
 	 */
-    
 	public Notification(Display display, String s) {
 		super(display, SWT.SHELL_TRIM);
 		Label lblNewLabel = new Label(this, SWT.NONE);
@@ -57,6 +56,7 @@ public class Notification extends Shell {
 		setSize(531, 300);
 
 	}
+
 	@Override
 	protected void checkSubclass() {
 		// Disable the check that prevents subclassing of SWT components

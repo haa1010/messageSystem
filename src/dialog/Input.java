@@ -17,7 +17,7 @@ import graph.*;
 
 /**
  * 
- * @author Tran Thi Hang
+ * @author Tran Thi Hang 20176748
  */
 
 public class Input extends Composite {
@@ -27,18 +27,11 @@ public class Input extends Composite {
 	private static Shell shell;
 
 	/**
-	 * Create the composite for customer typing in .
-	 * 
-	 * @param parent
-	 * @param style
+	 * Create the composite shell for customer typing in and update data for graph at 4pm everyday
+	 * @param args default
+	 * @see Update
 	 */
-	public static void main(String[] args) {
-		/**
-		 * This is the main method which will display dialog for customer and run method
-		 * main of class Update which use to update data for graph at 4pm everyday
-		 * 
-		 * @see Update
-		 */
+	public static void main(String args) {
 		Display display = new Display();
 		shell = new Shell(display);
 		shell.setLayout(new GridLayout(1, false));
@@ -57,21 +50,22 @@ public class Input extends Composite {
 		display.dispose();
 	}
 
+	/**
+	 * This is the constructor which uses to construct an Input instance for
+	 * handling. There are 3 buttons in the dialog : Cancel Button : close dialog.
+	 * Graph Button : display system's statistic graph. Send Button : before send,
+	 * we need to check that customer had filled out all the fields we need. Then
+	 * construct a message instance send to system and get a notification as a
+	 * result. If result is that message is wrong, then increase number of wrong
+	 * message in database
+	 * @param parent default 
+	 * @param style default
+	 * @see Graph
+	 * @see message
+	 * @see Notification
+	 * @see Database
+	 */
 	public Input(Composite parent, int style) {
-		/**
-		 * This is the constructor which uses to construct an Input instance for
-		 * handling. There are 3 buttons in the dialog : Cancel Button : close dialog.
-		 * Graph Button : display system's statistic graph. Send Button : before send,
-		 * we need to check that customer had filled out all the fields we need. Then
-		 * construct a message instance send to system and get a notification as a
-		 * result. If result is that message is wrong, then increase number of wrong
-		 * message in database
-		 * 
-		 * @see Graph
-		 * @see message
-		 * @see Notification
-		 * @see Database
-		 */
 		super(parent, style);
 		setLayout(null);
 

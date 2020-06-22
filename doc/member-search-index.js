@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"dialog","c":"Notification","l":"Notification(Display, String)","url":"%3Cinit%3E(org.eclipse.swt.widgets.Display,java.lang.String)"},{"p":"dialog","c":"Notification","l":"Notification(String)","url":"%3Cinit%3E(java.lang.String)"}]
