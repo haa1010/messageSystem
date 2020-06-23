@@ -12,7 +12,7 @@ import org.eclipse.swt.widgets.Shell;
 import org.eclipse.swt.widgets.Text;
 import org.eclipse.wb.swt.SWTResourceManager;
 
-import checkmess.message;
+import checkmess.Message;
 import graph.*;
 
 /**
@@ -31,7 +31,7 @@ public class Input extends Composite {
 	 * @param args default
 	 * @see Update
 	 */
-	public static void main(String args) {
+	public static void main(String[] args) {
 		Display display = new Display();
 		shell = new Shell(display);
 		shell.setLayout(new GridLayout(1, false));
@@ -149,7 +149,7 @@ public class Input extends Composite {
 					if (send.equals("") || mess.equals("") || receive.equals("")) {
 						output = new Notification("You have to fill out all fields!");
 					} else {
-						message test = new message(mess, Integer.parseInt(receive), send);
+						Message test = new Message(mess, Integer.parseInt(receive), send);
 						test.exe();
 						String res = test.getMessageReturn();
 
