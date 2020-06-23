@@ -6,25 +6,29 @@
 package checkmess.automata;
 /**
  *
- * @author tuanc
+ * @author hue
+ * already have 'Frd G' wait for space or endchar
  */
 public class State5 extends State0 {
     public int getNext(char c,int State){
     	
     	
     	if (c == ' ' || c == '\0')
-    	{ this.State=2;
+    	{ 
+    		/*set state=2,@return -1*/
+    		this.state=2;
     		return -1;
     	}
-        else if(c<='z'&&c>='A')
-            {if(this.State>1) this.State=State;
-        	else
-            	this.State=1;
+        else 
+            { /*state=max(State,1) @return 7*/
+        	
+        	 this.state=State;
+        
         	
         	
-        	return 7;}
-        else return 5;
-       
-    }
+        	return 7;
+        	}
+    }}
+    
    
-}
+

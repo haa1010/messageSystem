@@ -1,9 +1,12 @@
 package checkmess.automata;
-
+/*
+ * already have 'Frd ch' wait for 'g'
+ * */
 public class State22 extends State0 {
 	 public int getNext(char c,int State){
-		 if(State>1) this.State=State;
-         else this.State=11;
+		 //state=max(State,11)
+		 if(State>11) this.state=State;
+         else this.state=11;
 	if(c=='g') return 23;
 	 else if(c<='z'&&c>='A') {
 		

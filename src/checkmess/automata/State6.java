@@ -4,25 +4,32 @@
  * and open the template in the editor.
  */
 package checkmess.automata;
-
+/*
+ * already have 'Frd B' wait for space or endchar
+ * if not return 7
+ * */
 public class State6 extends State0 {
 	public int getNext(char c, int State) {
 
 		if (c == ' ' || c == '\0') {
-
-			this.State = 3;
+/*
+ * change state=3,@return -2
+ * */
+			this.state = 3;
 			return -2;
-		} else // if(c<='z'&&c>='A')
+		} else 
 
 		{
+	
+		/*
+		 * change state=State;
+		 * @return 7
+		 * */
 
-			this.State = State;
+			this.state = State;
 			return 7;
 		}
-//    	 else 
-//    	 {    		// this.State=State;
-//
-//    		 return 0;}
+
 	}
 
 }

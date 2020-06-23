@@ -7,13 +7,16 @@ package checkmess.automata;
 
 /**
  *
- * @author tuanc
+ * @author hue
+ * wait for space or endchar
+ * if not @return 9
+ * 
  */
 public class State7 extends State0 {
     public int getNext(char c,int State){
-    	if(this.State>1) this.State=State;
+    	if(this.state>1) this.state=State;
     	else
-    	this.State=1;
+    	this.state=1;
     		if(c==' '||c=='\0') return 7;
     		
     	return 9;

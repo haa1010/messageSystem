@@ -1,16 +1,18 @@
 package checkmess.automata;
-
+/*
+ * wait for char is not a space
+ * */
 public class State9 extends State0{
-
-	
-
 		 public int getNext(char c,int State){
-			 if(this.State>1) this.State=State;
+			 if(this.state>1) this.state=State;
 		    	else
-		    	this.State=0;
+		    	this.state=0;
+			 /*
+			  * if char != ' ' return 9
+			  * */
 		        if(c != ' ')
 		            return 9;
-		        else
+		        else //else back to 0
 		            return 0;
 		    }
 	 

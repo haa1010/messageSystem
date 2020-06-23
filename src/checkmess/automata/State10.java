@@ -2,7 +2,7 @@ package checkmess.automata;
 
 public class State10 extends State0 {
 
-	 public int getNext(char c){
+	 public int getNext(char c,int State){
 		 
 	        if(c != ' ')
 	            return 10;

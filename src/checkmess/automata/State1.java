@@ -7,22 +7,24 @@ package checkmess.automata;
 
 /**
  *
- * @author tuanc
+ * @author hue
  */
 public class State1 extends State0 {
 	
     public int getNext(char c,int State){
     	
         if(c=='r')
-                {
-        	if(State>0) this.State=State;
-        	else this.State=0;
+                { // change state
+        		//move to state 2: wait d
+        	if(State>0) this.state=State;
+        	else this.state=0;
         	return 2;
-            
-                
                 }
-                else if(c<='z'&&c>='A') return 8;
+                else if(c<='z'&&c>='A') 
+               // state to solve with character
+                	return 8;
                 else
+                	// back to wait F
                 return 0;
         }
     
