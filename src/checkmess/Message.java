@@ -1,12 +1,14 @@
-/*
- * @author: hue,hang
- * */
 package checkmess;
 
 import java.util.ArrayList;
 import automata.Automata;
 import response.Response;
 import graph.Database;
+
+/**
+ * @author hue
+ * @author hang
+ */
 
 public class Message {
 	private String message;// message sender send
@@ -17,10 +19,12 @@ public class Message {
 
 	private boolean isTrueReceiver = false;
 
-	/*
+	/**
 	 * constructor
 	 * 
-	 * @param message, receiver,phone
+	 * @param message
+	 * @param receiver
+	 * @param phone
 	 * 
 	 */
 	public Message(String message, int receiver, String phone) {
@@ -42,28 +46,23 @@ public class Message {
 		}
 	}
 
-	/*
+	/**
 	 * check message: check valid message corresponding to receiver and state using
 	 * service, set messageReturn and result
 	 * 
-	 * @param state of message, index: state of service, gender
-	 * 
-	 * @return: result>0 is valid, result=0 means wrong message, set messageReturn
-	 * 
-	 * 
+	 * @param state  of message
+	 * @param index: state of service,
+	 * @param gender
+	 */
+	/**
+	 * result>0 is valid, result=0 means wrong message, set messageReturn result
+	 * value: result =2: send girl's number result =3: send boy's number result =5:
+	 * accept del result =9: rejoin girl result= 10 : rejoin boy result=12: accept
+	 * change index value: index = -1: not use sevice yet using service index = 1
+	 * after delete service index = 0 after rejoin index = 2 after change gender
+	 * index = 3 case index=-1 ,user can send: Frd B/G to 8088
 	 */
 	public void checkMessage(int state, int index, String gender) {
-		/*
-		 * result value: result =2: send girl's number result =3: send boy's number
-		 * result =5: accept del result =9: rejoin girl result= 10 : rejoin boy
-		 * result=12: accept change index value: index = -1: not use sevice yet using
-		 * service index = 1 after delete service index = 0 after rejoin index = 2 after
-		 * change gender index = 3
-		 */
-
-		/*
-		 * case index=-1 ,user can send: Frd B/G to 8088
-		 */
 		if (index == -1) {
 
 			// wrong receiver
@@ -77,7 +76,6 @@ public class Message {
 				return;
 			} else if (state != 2 && state != 3) {
 				this.messageReturn = "B/G missing";
-				return;
 			} else
 			// state =2 : message is true form receive number of girl "Frd G"
 			if (state == 2) {
@@ -104,7 +102,7 @@ public class Message {
 			}
 
 		} else
-		/*
+		/**
 		 * index=0 means after delete sevice, user can send: Frd RJ B/G to 8011
 		 */
 		if (index == 0) {
@@ -123,7 +121,7 @@ public class Message {
 				return;
 
 			} else
-			/*
+			/**
 			 * if state !=10,9,8 means RJ missing
 			 */
 
@@ -148,11 +146,11 @@ public class Message {
 			}
 		} else
 
-		/*
+		/**
 		 * if index=1,2,3
 		 */
 		if (index == 1 || index == 2 || index == 3) {
-			/*
+			/**
 			 * if state=0
 			 */
 			if (state == 0) {
@@ -272,15 +270,16 @@ public class Message {
 
 	/**
 	 * This exe() method uses to handle message and give final result
-	 * Get information about customer from database 
-	 * Customer who hasn't join system has state = -1
-	 * Hanlde situations of result and update Database corresponding to request 
-	 * Case 2 : send 3 number of Girl 
-	 * Case 3 : send 3 number of Boy 
-	 * Case 5 : Customer deletes, disconnect to system, change state in Database 
-	 * Case 9 : Customer rejoin as a Girl 
-	 * Case 10 : Customer rejoin as a Boy 
-	 * Case 12 : Customer change  his/her gender
+	 * <br>
+	 * Get information about customer from database Customer who hasn't join system
+	 * has state = -1 
+	 * <br>
+	 * Hanlde situations of result and update Database corresponding to request <br>
+	 * Case 2 : send 3 number of Girl <br>
+	 * Case 3 : send 3 number of Boy <br>
+	 * Case 5 : Customer deletes, disconnect to system, change state in Database <br>
+	 * Case 9 : Customer rejoin as a Girl <br>
+	 * Case 12 : Customer change  his/her gender <br>
 	 */
 	public void exe() {
 		Message mes = this;
@@ -295,8 +294,8 @@ public class Message {
 		}
 
 		/**
-		 * Get information about customer from database Customer who hasn't join system
-		 * has state = -1
+		 * Get information about customer from database 
+		 * Customer who hasn't join system has state = -1
 		 */
 
 		Response user = new Response();

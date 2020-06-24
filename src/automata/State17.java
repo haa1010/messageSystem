@@ -1,5 +1,5 @@
-package automata;
-/*
+package  automata;
+/**
  * State17: alreary 'Frd RJ ' wait for B/G
  * this.state=8 means already reach 'Frd RJ ', wait for B/G
  * 

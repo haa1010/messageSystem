@@ -17,7 +17,7 @@ public class State2 extends State0 {
 	
     public int getNext(char c,int State){
     	//set state to max(State,0)
-    	//
+  
     	if(State>0) this.state=State;
     	else this.state=0;
     	if(c=='d') return 3;

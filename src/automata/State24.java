@@ -1,5 +1,7 @@
-package automata;
-
+package  automata;
+/**
+ * wait for space
+ * */
 public class State24 extends State0 {
 
 	 public int getNext(char c,int State){

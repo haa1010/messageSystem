@@ -5,7 +5,7 @@
  */
 package automata;
 
-/*
+/**
  *
  * @author hue
  * already have 'Frd' wait for space
@@ -14,7 +14,7 @@ public class State3 extends State0 {
     public int getNext(char c,int State){
     	if(c == ' ')
     	{ 
-    	/*
+    	/**
     	 * set state=max(State,1)
     	 * @return 4;
     	 * 
@@ -26,7 +26,7 @@ public class State3 extends State0 {
     		}
     	
     	else  if(c<='z'&&c>='A') { 
-    		/*
+    		/**
     		 * @return 8:wait for letter
     		 * */
     		if(State>0) this.state=State;
@@ -34,7 +34,8 @@ public class State3 extends State0 {
     		return 8;
     		}
     	else {
-    		/*@return 9: wait for not a letter
+    		/**
+    		 * @return 9: wait for not a letter
     		 * 
     		 * */
     		if(State>0) this.state=State;

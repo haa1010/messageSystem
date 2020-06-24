@@ -1,5 +1,5 @@
-package automata;
-/*
+package  automata;
+/**
  * already have 'Frd c' wait for 'h'
  * 
  * */

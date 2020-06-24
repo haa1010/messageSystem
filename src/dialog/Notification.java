@@ -56,4 +56,8 @@ public class Notification extends Shell {
 		setSize(531, 300);
 
 	}
+
+	@Override
+	protected void checkSubclass() {
+	}
 }

@@ -15,12 +15,12 @@ public class State5 extends State0 {
     	
     	if (c == ' ' || c == '\0')
     	{ 
-    		/*set state=2,@return -1*/
+    		/**set state=2,@return -1*/
     		this.state=2;
     		return -1;
     	}
         else 
-            { /*state=max(State,1) @return 7*/
+            { /**state=max(State,1) @return 7*/
         	
         	 this.state=State;
         

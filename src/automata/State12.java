@@ -1,5 +1,5 @@
 package automata;
-/*
+/**
  * already have 'Frd d', wait for e
  * */
 public class State12 extends State0 {

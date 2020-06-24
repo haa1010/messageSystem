@@ -8,6 +8,7 @@ package automata;
 /**
  *
  * @author hue
+ * wait for r
  */
 public class State1 extends State0 {
 	

@@ -27,7 +27,9 @@ public class Input extends Composite {
 	private static Shell shell;
 
 	/**
-	 * Create the composite shell for customer typing in and update data for graph at 4pm everyday
+	 * Create the composite shell for customer typing in and update data for graph
+	 * at 4pm everyday
+	 * 
 	 * @param args default
 	 * @see Update
 	 */
@@ -52,16 +54,17 @@ public class Input extends Composite {
 
 	/**
 	 * This is the constructor which uses to construct an Input instance for
-	 * handling. There are 3 buttons in the dialog : Cancel Button : close dialog.
-	 * Graph Button : display system's statistic graph. Send Button : before send,
-	 * we need to check that customer had filled out all the fields we need. Then
+	 * handling. <br> There are 3 buttons in the dialog : <br> Cancel Button : close dialog. <br>
+	 * Graph Button : display system's statistic graph. <br>Send Button : before send,
+	 * we need to check that customer had filled out all the fields we need. <br> Then
 	 * construct a message instance send to system and get a notification as a
 	 * result. If result is that message is wrong, then increase number of wrong
 	 * message in database
-	 * @param parent default 
-	 * @param style default
+	 * 
+	 * @param parent default
+	 * @param style  default
 	 * @see Graph
-	 * @see message
+	 * @see Message
 	 * @see Notification
 	 * @see Database
 	 */
@@ -149,15 +152,20 @@ public class Input extends Composite {
 					if (send.equals("") || mess.equals("") || receive.equals("")) {
 						output = new Notification("You have to fill out all fields!");
 					} else {
-						Message test = new Message(mess, Integer.parseInt(receive), send);
-						test.exe();
-						String res = test.getMessageReturn();
+						try {
 
-						// if message is wrong, increase number of wrong message in database
-						if (test.getResult() == 0) {
-							Database.countWrong();
+							Message test = new Message(mess, Integer.parseInt(receive), send);
+							test.exe();
+							String res = test.getMessageReturn();
+
+							// if message is wrong, increase number of wrong message in database
+							if (test.getResult() == 0) {
+								Database.countWrong();
+							}
+							output = new Notification(res);
+						} catch (Exception exc) {
+							output = new Notification("Wrong format. Try again!");
 						}
-						output = new Notification(res);
 					}
 					break;
 				}

@@ -1,5 +1,5 @@
-package automata;
-/*
+package  automata;
+/**
  * @author hue
  * already have '' wait for enchar or space
  * 

@@ -1,5 +1,5 @@
 package automata;
-/*
+/**
  * already have 'Frd de' wait for 'l'
  * set state=max(State,4)
  * */

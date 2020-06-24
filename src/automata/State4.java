@@ -11,7 +11,7 @@ package automata;
  */
 public class State4 extends State0 {
     public int getNext(char c,int State){
-    	/*
+    	/**
     	 * if c=' '@return 4;
     	 * if c='B' @ return 6
     	 * if c='G' @return 5

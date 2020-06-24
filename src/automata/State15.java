@@ -1,5 +1,5 @@
-package automata;
-/*
+package  automata;
+/**
  * after receive Frd R, wait for J. 
  * if char='j' move to state 16
  * if char !=j&& be a letter move to state 11

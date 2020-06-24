@@ -1,5 +1,5 @@
-package automata;
-/*
+package  automata;
+/**
  * already have 'Frd ch' wait for 'g'
  * */
 public class State22 extends State0 {

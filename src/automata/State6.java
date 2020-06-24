@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package automata;
-/*
+/**
  * already have 'Frd B' wait for space or endchar
  * if not return 7
  * */
@@ -12,7 +12,7 @@ public class State6 extends State0 {
 	public int getNext(char c, int State) {
 
 		if (c == ' ' || c == '\0') {
-/*
+/**
  * change state=3,@return -2
  * */
 			this.state = 3;
@@ -21,7 +21,7 @@ public class State6 extends State0 {
 
 		{
 	
-		/*
+		/**
 		 * change state=State;
 		 * @return 7
 		 * */

@@ -11,12 +11,15 @@ package automata;
  */
 public class State0 {
 	public int state=0;
-	/*
-	 * getNext()
-	 * input: char c, int State
-	 * output: an integer 
-	 * to find next State will use for next character, also set state 
-	 * this.state= State>0?State:0
+	/**
+	 * @param c 
+	 * character
+	 * @param State
+	 * current state of string 
+	 * @return  integer 
+	 */
+	 /** to find next State will use for next character, also set state 
+	 * set state for max value
 	 * */
     public int getNext(char c, int State){
     	if(State>0) this.state=State;

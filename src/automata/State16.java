@@ -1,5 +1,5 @@
-package automata;
-/*
+package  automata;
+/**
  * after receive Frd RJ, wait for space 
  * if it is space return 17, set state=State>6?State:8
  * else if it is a letter return 26, set state=State>6?State:7

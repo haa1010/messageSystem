@@ -1,5 +1,6 @@
-package automata;
-//wait for not a space
+package  automata;
+/**wait for a space
+*/
 public class State26 extends State0 {
 	public int getNext(char c,int State){
 		if(State>1) this.state=State;

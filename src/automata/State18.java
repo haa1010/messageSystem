@@ -1,6 +1,6 @@
-package automata;
+package  automata;
 public class State18 extends State0 {
-	/*
+	/**
 	 * already have 'Frd RJ G' and wait for end char or space
 	 * if character= endchar or space @return -4, set state=9;
 	 * if character=letter @return 20, state=8;

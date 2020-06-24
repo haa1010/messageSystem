@@ -1,6 +1,6 @@
-package automata;
-/*
- * wait for not a space
+package  automata;
+/**
+ * wait a space
  * if not a space @return 25 else return 0
  * */
 public class State25 extends State0 {

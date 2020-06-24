@@ -1,6 +1,5 @@
 
-/*
- * author:hue
+/** @author:hue
  *
  * */
 package checkmess;
@@ -17,6 +16,10 @@ public class CheckPhone {
 		this.phone = x;
 	}
 //check valid phone number
+	/**
+	 * validate phone number
+	 * @return bool
+	 * */
 	public boolean isValidPhone() {
 		// phone must in form 09..., include 10 digit
 		Pattern p = Pattern.compile("(09)?[0-9]{8}");
